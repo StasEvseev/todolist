@@ -1,0 +1,7 @@
+http://127.0.0.1:5984/_utils/#/database/todos/_all_docs
+
+https://pouchdb.com/api.html#sync
+
+https://hub.docker.com/r/kobretti/couchdb-cors/
+
+python -m SimpleHTTPServer
