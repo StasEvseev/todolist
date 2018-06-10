@@ -1,30 +1,30 @@
-import React, { Component } from 'react';
-// import InputNewTodo from "./InputNewTodo";
+import React from 'react';
+import PropTypes from 'prop-types'
+import Todo from './Todo'
 
+import "./TodoList.css"
 
-class TodoList extends Component {
+const TodoList = ({todos, toggleTodo}) => (
+    <ul id="todo-list">
+        {todos.map(todo =>
+          <Todo
+            key={todo.id}
+            {...todo}
+            onClick={() => toggleTodo(todo.id)}
+          />
+        )}
+    </ul>
+);
 
-    constructor(props) {
-        super(props);
-
-        this.handleEnter = this.handleEnter.bind(this);
-        this.handleChange = this.handleChange.bind(this);
-
-        this.state = {
-            items: [],
-            value: ''
-        }
-    }
-
-    render() {
-        return(
-            <ul id="todo-list">{listItems}</ul>
-            // <input id="new-todo" placeholder="What needs to be done?"
-            //        onKeyPress={this.handleEnter}
-            //        onChange={this.handleChange}
-            //        autoFocus value={this.state.value} />
-        );
-    }
-}
+TodoList.propTypes = {
+  todos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      completed: PropTypes.bool.isRequired,
+      text: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired,
+  toggleTodo: PropTypes.func.isRequired
+};
 
 export default TodoList;
