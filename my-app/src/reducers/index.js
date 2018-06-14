@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux'
+import { persistentReducer } from 'redux-pouchdb-plus';
 import {
   ADD_TODO, TOGGLE_TODO
 } from '../actions/index'
@@ -31,7 +32,8 @@ function todos(state = [], action) {
 
 const todoApp = combineReducers({
   // visibilityFilter,
-  todos
+  // todos
+    'todos': persistentReducer(todos)
 });
 
 export default todoApp;
